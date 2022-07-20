@@ -1,8 +1,8 @@
 # Clinic Database
 
-> In this project I have used a relational database to create the initial data structure for a vet clinic. I created a table to store information about animals, insert data into it and write some queries for it. 
+> In this project we created a relational database `clinic` from the provided database schema diagram below.  
 
-![image](  )
+![clinic_diagram](https://user-images.githubusercontent.com/67911212/179966015-7cb8b66e-7c06-4d8c-870b-505d1a8ffda2.png)
 
 ## Technologies used:
 - PostgreSQL
