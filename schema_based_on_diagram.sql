@@ -18,10 +18,20 @@ CREATE TABLE "medical_histories" (
 
 CREATE TABLE "invoices" (
   "id" INT,
-  "total_amount" DECIMA,
+  "total_amount" DECIMAL,
   "generated_at" TIMESTAMP,
-  "payed_at" TIMEESTAMP,
-  "medical_history_id" INT,
+  "payed_at" TIMESTAMP,
+  "medical_history__id" INT,
+  PRIMARY KEY ("id"),
+  CONSTRAINT "FK_invoices.medical_history__id"
+    FOREIGN KEY ("medical_history__id")
+      REFERENCES "medical_histories"("id")    
+);
+
+CREATE TABLE "treatments" (
+  "id" INT,
+  "type" VARCHAR(100),
+  "name" VARCHAR(100),
   PRIMARY KEY ("id")
 );
 
@@ -33,14 +43,10 @@ CREATE TABLE "invoice_items" (
   "invoice_id" INT,
   "treatment_id" INT,
   PRIMARY KEY ("id"),
+  CONSTRAINT "FK_invoice_items.treatment_id"
+    FOREIGN KEY ("treatment_id")
+      REFERENCES "treatments"("id"),
   CONSTRAINT "FK_invoice_items.invoice_id"
     FOREIGN KEY ("invoice_id")
       REFERENCES "invoices"("id")
-);
-
-CREATE TABLE "treatments" (
-  "id" INT,
-  "type" VARCHAR(100),
-  "name" VARCHAR(100),
-  PRIMARY KEY ("id")
 );
